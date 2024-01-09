@@ -8,7 +8,7 @@ const { image, name, gender } = defineProps(["image", "name", "gender"]);
       <h3>{{ name }}</h3>
       <h5>{{ gender }}</h5>
     </template>
-  </n-card>
+  </n-card>    
 </template>
 
 <style scoped>

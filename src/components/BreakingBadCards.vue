@@ -3,7 +3,7 @@ import axios from "axios";
 import { ref, watch } from "vue";
 import Card from "./Card.vue";
 import Hero from "./Hero.vue";
-const page = ref(0);
+const page = ref(1);
 const character = ref(null);
 
 const response = await axios.get(
@@ -19,7 +19,10 @@ watch(page, async () => {
 </script>
 <template>
     <Hero/>    
-  <div class="container">
+  <div class="container">    
+    <n-gradient-text :size="40"  gradient="linear-gradient(90deg, red 0%, green 50%, blue 100%)" :repeat="2">
+        Characters on Page {{ page }}
+      </n-gradient-text>    
     <div class="cards">
       <Card
         v-for="character in character"
@@ -28,18 +31,26 @@ watch(page, async () => {
         :name="character.name"
         :gender="character.gender"
       />
-    </div>
-    <div class="button-container">
-      <button @click="page--">&lt</button>
-      <button @click="page++">></button>
-    </div>
-  </div>
+    </div>    
+    <div class="pagination">
+        <n-pagination v-model:page="page" :page-count="42">
+        <template #prev>
+            Go Prev
+          </template>
+          <template #next>
+            Go Next
+          </template>
+        </n-pagination>
+    </div>    
+  </div>          
 </template>
 <style scoped>
-/* Breaking Bad Styles */
 .container {
   background-color: rgb(27, 26, 26);
   padding: 30px;
+  display: flex;
+  flex-direction: column;  
+  align-items: center;
 }
 .cards {
   max-width: 1000px;
@@ -53,23 +64,25 @@ watch(page, async () => {
 .cards p {
   font-size: 10px;
 }
-.button-container {
-  display: flex;
-  justify-content: center;
-  padding-top: 30px;
+.n-pagination{
+    margin: 20px 0;
+    padding: 10px;    
+    color: green;    
+    font-size: 25px;
 }
-.button-container button {
-  border: none;
-  width: 50px;
-  height: 50px;
-  border-radius: 100%;
-  margin: 0 5px;
-  cursor: pointer;
-  outline: none;
+.n-pagination:hover{
+    transition: 0.5s ease-in-out;
+    transform: scale(1.1);
 }
-.spinner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.n-gradient-text{
+    animation: pulse 5s linear infinite;
+}
+@keyframes pulse {
+    0%{
+    opacity: .5;
+    }
+    100%{
+        opacity: 1;
+    }
 }
 </style>

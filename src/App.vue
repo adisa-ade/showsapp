@@ -4,13 +4,15 @@ import BreakingBadCardsVue from "./components/BreakingBadCards.vue";
 
 <template>
   <Suspense>
-    <template #default><BreakingBadCardsVue /></template>
+    <template #default>
+      <BreakingBadCardsVue />
+    </template>
     <template #fallback>
-      <div class="cards spinner">
+      <div class="cards">
         <NSpin size="large" />
       </div>
-    </template>
-  </Suspense>
+    </template>        
+  </Suspense>  
 </template>
 
 <style scoped>
@@ -19,6 +21,7 @@ import BreakingBadCardsVue from "./components/BreakingBadCards.vue";
   background-color: rgb(27, 26, 26);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center;  
 }
+
 </style>
