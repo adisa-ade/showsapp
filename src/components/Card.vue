@@ -1,17 +1,12 @@
 <script setup>
-import { useRouter } from "vue-router";
-const { character, image, name, gender } = defineProps(["character", "image", "name", "gender"]);
-const router = useRouter()
-const navigateToCharacterDetails = () => {
-  router.push(`/character/${character.id}`);
-};
+const { character } = defineProps(["character"]);
 </script>
 <template>
-  <n-card @click="navigateToCharacterDetails">
+  <n-card>
     <template #cover>
-      <img :src="image" />
-      <h3>{{ name }}</h3>
-      <h5>{{ gender }}</h5>
+      <img :src="character.image" />
+      <h3>{{ character.name }}</h3>
+      <h5>{{ character.gender }}</h5>
     </template>
   </n-card>    
 </template>

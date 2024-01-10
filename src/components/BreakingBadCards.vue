@@ -31,9 +31,7 @@ watch(page, async () => {
         v-for="character in character"
         :key="character.id"
         :character="character"
-        :image="character.image"
-        :name="character.name"
-        :gender="character.gender"                
+                        
       />
     </div>    
     <div class="pagination">
