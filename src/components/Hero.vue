@@ -1,6 +1,9 @@
 <template>
 <div class="hero">
-    <h1>Rick and Morty</h1>
+    
+    <n-gradient-text :size="40"  gradient="linear-gradient(90deg, red 0%, green 50%, blue 100%)" :repeat="2">
+        <h1> Rick and Morty</h1>
+      </n-gradient-text>
     <p></p>
 </div>
 </template>
